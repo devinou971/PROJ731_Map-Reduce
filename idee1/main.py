@@ -5,7 +5,7 @@ import os
 import collections
 start = time()
 
-files = ["../data/Le-seigneur-des-anneaux-tome-1.txt"]
+files = ["../data/the-full-bee-movie-script.txt", "../data/test1.txt", "../data/Le-seigneur-des-anneaux-tome-1.txt", "../data/Le-seigneur-des-anneaux-tome-1_1.txt", "../data/bible.txt"]
 
 def mapper(file_content, nb_reducer, mapper_id):
     file_content = file_content.replace(",", " ")
@@ -61,14 +61,15 @@ if __name__ == "__main__":
     nb_reducer = 4
     incr = 0
     
-    files_content = ""
+    files_content = []
 
     for f in files:
         with open(f, "r", encoding="utf8") as file:
-            files_content = file.readlines()
+            files_content += file.readlines()
 
     nb_line = len(files_content)
-
+    print(nb_line)
+    
     with ctx.Pool(processes=nb_mapper) as p:
         for x in range(0, nb_mapper):
             print(nb_line/nb_mapper * x)
