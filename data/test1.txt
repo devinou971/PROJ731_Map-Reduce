@@ -1,0 +1,219 @@
+Les différents visages de la Guerre Numérique Russe :
+Hacktivisme et Guerre de l’information
+Introduction
+Les concepts de cyber sécurité et de cyberespace sont présents depuis maintenant plusieurs décennies, mais ce n’est que depuis une vingtaine d'années que ces concepts ont pris plus d’importance. La valeur de l’information n’a cessé d’augmenter et les moyens de l’obtenir ont évolué. C’est quand les informations et autres acteurs importants se sont retrouvés sur le cyberespace que celui-ci est devenu un facteur de guerre important, causant ainsi l'avènement de la guerre numérique. Dans ce rapport, nous nous poserons la question : Comment la guerre numérique menée par la Russie influence le monde réel ? Le paysage de la guerre numérique russe est un phénomène complexe, qui englobe plusieurs activités allant de l'hacktivisme à la guerre de l'information. Nous explorerons les différentes facettes de la guerre numérique russe, notamment les motivations, les tactiques et les capacités des différents acteurs impliqués. Nous parlerons également de notre capacité à nous défendre contre ces attaques. Dans un premier temps, nous examinerons le rôle de l'hacktivisme dans la guerre numérique russe, notamment l'utilisation de cyberattaques pour promouvoir des programmes politiques et perturber les infrastructures critiques. Dans un second temps, nous nous pencherons sur le rôle de la guerre de l'information par la Russie et ses acteurs, notamment l’utilisation de cyberattaques pour récupérer des informations tactiques, ainsi que pour manipuler l'opinion publique et la diffusion de la désinformation par le biais des médias sociaux et d'autres canaux. Dans un troisième temps, nous parlerons des manières par lesquelles nous pouvons nous protéger. Et enfin, nous conclurons. En examinant ces différentes facettes de la guerre numérique russe, nous espérons fournir une compréhension globale de ce paysage de menaces en constante évolution.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Introduction	1
+Sommaire	2
+1. L’Hacktivisme Russe	2
+1.1. Définition	2
+1.2. Les acteurs Hacktivistes Russes	3
+1.3. Les actions majeures menées par les hacktivistes.	4
+1.3.1. Le conflit de la statue en Estonie (2007)	4
+1.3.2. La guerre Russo - Georgienne de 2008	4
+1.3.3. Les attaques contre la Lituanie (Juin 2022)	5
+1.3.4. La guerre en Ukraine (2014- aujourd’hui )	5
+2. La Guerre d’information Russe	6
+2.1. Définition	6
+2.2. Les principaux acteurs	6
+2.3. Les actions de APT28 et APT29	8
+3. La protection contre les attaques : La Cyberdéfense	9
+3.1. Les bonnes pratiques de cyber sécurité à l’échelle humaine	9
+3.2. Les acteurs qui travaille à notre protection	10
+4. Conclusion	11
+Sources	12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+L’Hacktivisme Russe
+Dans un premier temps, nous allons examiner l'hacktivisme Russe et ses répercussions. Nous allons commencer par définir le terme “Hacktivisme”, puis nous parlerons plus précisément de l'hacktivisme Russe, les différents groupes et comment ils s'inscrivent dans la stratégie de guerre Russe. Pour finir,  nous donnerons des exemples de campagnes menées à bien par les différents groupes et leurs répercussions.
+Définition
+Le terme “Hacktivisme” est la combinaison du mot “Hacker” et “activisme” et désigne une forme de militantisme. L’hacktivisme, comme l'activisme, consiste à représenter une idée ou une opinion et la défendre. La différence avec l’activisme est l’utilisation de connaissances en piratage informatique pour atteindre ses objectifs. Cela peut se décliner en un grand nombre d’actions : l'attaque par déni de service d’un site web particulier (des sites gouvernementaux ou des sites d’entreprises), la dégradation de sites webs ou de réseaux sociaux, ainsi que la fuite d’informations plus ou moins sensibles. Ces groupes peuvent également porter leurs actions sur les réseaux sociaux et communiquer dessus.
+
+Les hacktivistes sont généralement des groupes d’individus possédants des capacités en hacking ou pas, et qui désirent porter un message à l’attention du public. Cela peut être causé par de multiples motivations : des motivations politiques, sociales ou économiques. Il est intéressant de savoir que devenir hacktiviste est à la portée de toute personne avec ou sans expérience en piratage informatique. En effet, cela peut être aussi simple que de s’intégrer dans un botnet pour participer à une attaque Ddos ou d’en louer un déjà créé.
+
+Bien que l’hacktivisme est une forme d’activisme, il ne faut pas oublier que c’est une pratique qui implique l’utilisation d’outils illégaux qui peuvent avoir des conséquences non superficielles sur les entités ciblées. Cela pose une question d’éthique intéressante, car les membres des groupes hacktivistes doivent se demander si la défense de leur cause peut valoir la quantité de dégâts qui peut être infligée à la cible visée.
+Les acteurs Hacktivistes Russes
+Dans un premier temps, il est important de préciser qu’il est impossible de confirmer l’appartenance d’un groupe Hacktiviste à un gouvernement. En effet, “Les liens directs au gouvernement Russe sont difficiles à prouver de manière concluante”(Russia’s Approach to Cyber Warfare, page 10), mais “Il y a un nombre de groupes dont les activités sont étroitement alignées avec les objectifs et la vision du monde du Kremlin”. Ainsi, nous nous référerons à ces groupes très proches du Kremlin comme “Hacktivistes Russes”.
+
+Les Hacktivistes Russes “ont été un élément central des cyber-opérations offensives russes, en raison de l'anonymat qu'ils offrent et de la facilité avec laquelle ils peuvent être mobilisés”(Russia’s Approach to Cyber Warfare). En effet,  grâce à leurs outils sophistiqués et leur nombre, ils ont un rôle important dans la stratégie de la guerre numérique Russe. Ils utilisent les attaques Ddos pour viser des sites gouvernementaux et paralyser des systèmes d’informations entier.
+
+L’Hacktivisme Russe est souvent utilisé pour atteindre certains objectifs politiques, tel que pour influencer les élections étrangères. Par exemple, durant les élections présidentielles françaises de 2017, des attaques DDos ont été menées contre le site “en-marche.fr”. Dans ces cas, les hacktivistes Russes ont été accusés de faire passer des informations fausses et erronées, faisant fuiter des informations sensibles et conduisant des attaques DDoS sur des infrastructures critiques.
+
+Il y a un grand nombre de groupes Hacktivistes dans le cyberespace. Voici ceux cités dans les documents étudiés : “Killnet”, “APT28” ou “Fancy Bear” et  “XakNet”.
+Les actions majeures menées par les hacktivistes.
+
+Ici, nous allons faire une liste des actions menées par des hacktivistes au service de la Russie contre différents Etats, notamment pendant des conflits .
+Le conflit de la statue en Estonie (2007)
+
+Le conflit de 2007 entre la Russie et l'Estonie a été un événement majeur dans l'histoire de la cyberguerre russe, car il a marqué la première fois qu'une cyberattaque a été utilisée dans le cadre d'une campagne militaire. Le conflit a débuté lorsque l'Estonie a retiré “Bronze Soldier of Tallinn” une statue de l'ère soviétique du centre de Tallinn, la capitale. Cela a entraîné une série de protestations de la part de citoyens russes et une augmentation significative des tensions entre les deux pays.
+
+En réponse au retrait du monument, un certain nombre de groupes hacktivistes russes ont lancé une série de cyberattaques contre des cibles gouvernementales et des infrastructures estoniennes. Ces attaques comprenaient des attaques DDoS contre des sites Web gouvernementaux et la perturbation d'infrastructures critiques. En effet, les attaques ont visé des structures responsables des communications à l'international. Ainsi, les capacités du pays à communiquer avec ces voisins ont été endommagées.
+
+L’impact de ces attaques sur le pays était très grand. En effet, à l'époque, 60% des 1.3 millions d’habitants utilisaient régulièrement l’Internet et le gouvernement se considérait effectivement “sans papier” (Russia’s approach to Cyber Warfare).
+La guerre Russo - Georgienne de 2008
+
+En 2008, une guerre a été  menée par les Russes contre la Géorgie du 7 au 16 août. Le but de cette guerre était d’éviter de nouveaux conflits entre la Géorgie et l’Ossétie du Sud.
+
+C’était la première fois qu’ une attaque informatique de grande ampleur fut conduite en tandem avec des attaques au sol. Bien que les attaques dans le cyber espace n'aient pas de lien avec les actions du gouvernement Russes, ils ont eu “un impact informationnel et psychologique important sur la Géorgie : ils ont effectivement isolé l'État du Caucase du monde extérieur” (The 2008 Russian Cyber-Campaign Against Georgia). Les attaques ont été organisées en phases.
+
+La première phase a commencé le 7 août. Les hacktivistes ont visé les sites d’informations, ainsi que les sites gouvernementaux en réponse des attaques Géorgiennes contre l’Ossétie du Sud. Les attaques étaient principalement des DDos qui avaient pour but de dissuader les forces Géorgiennes. Ces attaques ont été principalement conduites par des Botnets.
+
+Dans la seconde phase des opérations, les attaques contre les sites gouvernementaux ont continué, mais de nouveaux objectifs ont été ajoutés. La liste des cibles fut élargie pour inclure différentes institutions, telles que des entreprises privées ou des institutions financières. La nature et les objectifs des attaques ont également changé. En effet, “les attaques contre ces serveurs comprenaient non seulement des attaques DDoS, mais aussi des dégradations de sites web (par exemple, des graffitis pro-russes sur des sites gouvernementaux, tels qu'une image assimilant le président géorgien Mikheil Saakashvili à Adolf Hitler)” . Durant cette phase, d’autres Russes ont été recrutés pour emprunter la puissance de calcul de leurs ordinateurs.
+
+Toutes ces actions ont permis à l’armée Russe d’avancer très rapidement à l’intérieur de la Georgie, car les systèmes Georigens était sous attaque, causant une mauvaise coordination du côté de la Georgie.
+Les attaques contre la Lituanie (Juin 2022)
+
+En réponse à l'invasion de l'Ukraine par la Russie, plusieurs pays prennent des mesures pour ralentir la Russie et la dissuader de poursuivre la guerre. La Lituanie, faisant partie d’un de ces pays, a décidé de bloquer l’exportation de charbon et de métal.
+
+Suite à ce blocage, le groupe Hacktiviste “Killnet”, dont le gouvernement Russe dénie toute affiliation, a décidé de rassembler plusieurs groupes afin d’attaquer les infrastructures réseaux lituaniennes. Du 20 au 30 Juin, des attaques DDos de grandes envergures ont été menées contre des sites web gouvernementaux, les forçant ainsi à fermer pendant quelque temps. Ces attaques furent particulièrement féroces, car, “habituellement, les attaques DDoS sont concentrées sur une ou deux cibles”(Russian “Hacktivists” Are Causing Trouble Far Beyond Ukraine), mais cette fois-ci, les attaques ciblaient près de 130 sites web publics et privés. Les attaques se sont arrêtées au début du mois de Juillet.
+
+Cela apporte une nouvelle problématique à la défense contre les forces cyber Russes. En effet, on pense être en sécurité, car l’Ukraine est la cible principale, mais, la présence de groupes Hacktivistes non liés au gouvernement présente une menace potentielle pour tous les pays qui ne répondent pas aux opinions politiques de ces groupes.
+
+La conséquence directe de ces attaques a été une perte de services en Lituanie. La conséquence indirecte est une incertitude qui  s’est installée petit à petit dans la population. En effet, la communication de “Killnet” sur Telegram suivi de l’attaque à grande échelle sur le pays apporte la peur de ne pas être suffisamment protégé contre des attaques telles que celle-ci. Cela montre ainsi, l’importance d’être prêt à toute éventualité.
+
+La guerre en Ukraine (2014- aujourd’hui )
+
+Des éléments suggèrent que la Russie est à l'origine d'une série de cyberattaques visant l'Ukraine durant cette guerre, notamment des attaques par phishing, des logiciels malveillants, des attaques DDoS et des attaques TDoS. Ces attaques ont perturbé les communications, obtenu et divulgué des documents gouvernementaux, et mis hors service des sites web et des systèmes informatiques. En 2015, il y a également eu une attaque contre le réseau électrique ukrainien qui a provoqué des coupures de courant pour plus de 220 000 personnes, qui a été attribuée à la Russie.
+
+Plus récemment, les pirates russes ont utilisé le logiciel malveillant Ouroboros pour cartographier et ouvrir des portes dérobées dans les réseaux gouvernementaux ukrainiens et européens, et des rapports font état d'une nouvelle souche de logiciel malveillant appelée GreyEnergy qui a ciblé les entreprises énergétiques ukrainiennes. Ces cyber opérations ont pour but de saper la capacité du gouvernement ukrainien à sécuriser ses systèmes d'information et à communiquer, ainsi que la légitimité et l'autorité des institutions politiques et militaires ukrainiennes.
+
+Néanmoins, depuis le début de l’invasion Russe en 2021, les attaques se sont plutôt dirigés vers les pays qui soutiennent l’Ukraine comme la France ou la Lituanie , bien qu’elles existent toujours contre l’Ukraine.
+La Guerre d’information Russe
+Quand les hackers n'essaient pas de détruire des systèmes d’information, ils essaient de récupérer ces infos pour pouvoir les utiliser de manière détournée. Dans cette partie, nous allons définir ce qu’est la guerre d’information, puis nous allons donner la position de la Russie dans le conflit présent, et enfin, nous présenterons des exemples de groupes actifs dans cette guerre cyber ainsi que des actions qui se sont déroulées dans le cyberespace.
+
+Définition
+La guerre d'information russe est une campagne de désinformation et de manipulation de l'opinion publique menée par la Russie dans le but de promouvoir ses propres intérêts et de déstabiliser d'autres gouvernements et sociétés. Cela peut inclure la diffusion de “fake news” et de théories du complot, ainsi que l'utilisation de réseaux sociaux et d'autres médias en ligne pour diffuser de l'information trompeuse. La guerre d'information russe est souvent menée en utilisant des influenceurs et des trolls en ligne payés pour diffuser de fausses informations et pour semer le doute et la confusion. Elle peut également inclure des cyberattaques et des opérations de piratage visant à altérer ou à voler des données sensibles.
+
+Les principaux acteurs
+Il existe plusieurs acteurs principaux en Russie dans cette guerre d’informations, dont nous allons faire la liste ci-dessous :
+Les médias gouvernementaux tels que RT ou Sputnik, qui ont été de nombreuses fois accusés de diffuser de fausses informations , que ce soit sur le covid-19 ou la guerre en Ukraine. L’avantage d'utiliser ces médias , qui ont beaucoup de personnels,de matériels, c’est que cela donne une certaine légitimité aux informations qu’ils diffusent comparés à des sites plus obscurs. C’est donc une arme puissante pour le Kremlin pour son influence et son ingérence dans d’autres pays.
+
+Le gouvernement lui-même va diffuser de fausses informations ou bien en voler pour servir ses intérêts notamment avec le GRU ou le FSB ( les services secrets russe )
+
+Les fermes à  troll sont aussi une arme puissante du Kremlin. En effet, elles se sont démarquées à plusieurs occasions, notamment pendant la crise du covid-19 et les récentes élections. L’exemple le plus parlant est pendant l’élection américaine de 2016, où la Russie à réussi à influencer cette élection en diffusant beaucoup de fausses informations sur les réseaux sociaux ( principalement facebook , mais aussi Twitter ). Cette méthode est particulièrement redoutable car très efficace et difficile à contrer . Effectivement, il est très facile “d’inonder” les réseaux sociaux d’informations avec des faux comptes et c’est compliqué pour les entreprises d’endiguer cela  car le bannissement des comptes ne fonctionne pas vraiment. Il est trop simple d’en recréer et les trolls peuvent se servir de cela pour dénoncer une “censure injuste “ ,” qu’ils ont raisons et que c’est pour cela qu’on les banni” et ainsi donner plus de forces à leur propos.
+
+Les organisations criminelles ou les groupes de hackers sont une partie importante de la stratégie du Kremlin. La Russie dispose d'un vaste réservoir d'experts techniques, y compris de pirates informatiques qualifiés, et d'un État de droit faible qui permet la collaboration avec la partie “sombre” du cyber.. Les syndicats russes,tels que le Russian Business Network, mais aussi les groupes de hackers, comme APT 28 ou APT 29  fournissent au gouvernement des services tels que les attaques DDoS, le test et le conditionnement de logiciels malveillants, les packs d'exploits, les serveurs dédiés, les VPN ou bien les botnets. Cette “armée” de l’ombre est peut-être l’arme la plus efficace du Kremlin puisqu’elle s’affranchit de la loi ou d’une certaine morale.
+
+Enfin, il y a aussi les personnalités politiques ou influentes . Nous pouvons prendre l’exemple de Margarita Simoyan .Elle est une journaliste russe qui joue un rôle important dans la diffusion de la propagande et de la désinformation. Elle est particulièrement habile pour faire passer des mensonges pour des vérités. Simonyan a débuté sa carrière dans les médias contrôlés par le Kremlin en 2001, et est depuis devenue rédactrice en chef du média anglophone financé par l'État russe, RT (Russia Today). Elle est également rédactrice en chef de Rossiya Segodnya, rédactrice en chef de TV-Novosti et cofondatrice de l'Association pour le développement du journalisme international. Elle a été accusée de mentir délibérément lors de ses reportages sur l'attaque de l'école de Beslan en 2004, elle a également soutenu l'annulation de l'interdiction de la censure des médias en Russie et a nié l'intention de la Russie d'entreprendre une action militaire contre l'Ukraine avant l'invasion de février 2022. Depuis l'invasion, elle a défendu l'annexion de la Crimée et a nié la présence de soldats russes en Ukraine. Elle a également diffusé de la désinformation sur les bombardements en Syrie et sur l'empoisonnement de l'opposant russe Aleksei Navalny.  Elle occupe donc un poste très important dans la propagande du Kremlin.
+
+Il y a donc de nombreux acteurs qui travaillent pour le Kremlin dans sa guerre d’informations. Nous allons nous intéresser de plus près aux deux groupes de hacker ATP 28 et ATP29 , en détaillant un peu plus qui ils sont et ce qu’ils ont fait .
+Les actions de APT28 et APT29
+
+APT (Advanced Persistent Threat) est généralement utilisé pour désigner une menace avancée persistante liée à des groupes de hackers présumés opérant en Russie et censés être soutenus par le gouvernement russe. Ces groupes de hackers ont été accusés de mener des campagnes de cyberespionnage ciblant principalement des organisations gouvernementales et militaires de pays occidentaux, ainsi que des entreprises de défense et de technologies de l'information. Cependant, il est important de noter que les groupes de hackers APT sont souvent difficiles à identifier avec certitude et que l'attribution de leurs activités à un pays ou à un groupe spécifique peut être délicate.
+
+APT28 (aussi connu sous le nom de Fancy Bear) et APT29 (aussi connu sous le nom de Cozy Bear) sont deux groupes de hackers actifs qui sont souvent associés à la Russie. Voici quelques exemples d'actions que les Etats-Unis ont attribuées à ces groupes:
+
+APT28:
+
+En 2014 et 2015, le groupe est soupçonné d'avoir mené une cyberattaque de six mois contre le parlement allemand, qui a complètement paralysé l'infrastructure informatique de l'organisation et entraîné la perte de 16 gigaoctets de données. En 2016, le groupe est soupçonné d'avoir mené une attaque de spearphishing contre des membres du parlement allemand et de divers partis politiques. Les autorités craignaient que des informations sensibles aient pu être recueillies par les pirates afin de manipuler le public avant les élections en Allemagne. En mai 2020, un mandat d'arrêt a été émis pour l'arrestation d'un membre de Fancy Bear en lien avec les attaques contre le parlement allemand.
+
+En août 2015, Fancy Bear a utilisé un exploit zero-day de Java, usurpant l'Electronic Frontier Foundation et lançant des attaques contre la Maison Blanche et l'OTAN. Les pirates ont utilisé une attaque de spear phishing, dirigeant les courriels vers la fausse URL electronicfrontierfoundation.org.
+
+En 2018, ils ont piraté les serveurs du Comité national olympique et sportif américain et de l'Union cycliste internationale dans le but de diffuser de l'information compromettante sur les athlètes américains.
+
+En 2016, ils ont piraté les serveurs du Parti démocrate et diffusé des courriels compromettants sur les plateformes de médias sociaux dans le but d’influencer les élections présidentielles américaines.
+
+APT29:
+
+En août 2015, Cozy Bear a été lié à une cyberattaque de spear-phishing contre le système de messagerie du Pentagone, entraînant la fermeture de l'ensemble du système de messagerie non classifié de l'état-major interarmées et de l'accès à Internet pendant l'enquête
+
+En 2020, ils ont lancé une attaque de logiciels malveillants connue sous le nom de SolarWinds qui a affecté de nombreuses entreprises et gouvernements dans le monde entier. Cette attaque a été décrite comme l'une des attaques les plus importantes et les plus insidieuses jamais lancées contre les États-Unis.
+
+En février 2017, le service de sécurité de la police norvégienne (PST) a signalé que des tentatives de phishing des comptes de messagerie de neuf personnes du ministère de la Défense, du ministère des Affaires étrangères et du Parti travailliste avaient eu lieu. Les actes ont été attribués à ATP29, dont les cibles comprenaient l'Autorité norvégienne de radioprotection ou bien le chef de section du PST. Le Premier ministre Erna Solberg a qualifié ces actes de " grave attaque contre nos institutions démocratiques ".
+
+En 2014, ils ont piraté les serveurs du Département d'État des Etats-Unis et diffusé des données sensibles sur les réseaux sociaux.
+
+Ces groupes ont été accusés de bien d’autres actes de piratages comme en 2016 sur les serveurs de la Commission de l’Union européenne, en 2017 avec les piratages des serveurs du Parlement Britannique et de l’Organisation mondiale de la santé, ou encore en 2018 sur les serveurs de l’Agence de sécurité nationale américaine. A chaque fois, les piratages ont conduit à une diffusion d’informations compromettantes sur les réseaux sociaux.
+
+Il est important de noter que ces accusations n'ont pas été prouvées et que la Russie a nié toute responsabilité dans ces actions.
+
+La protection contre les attaques : La Cyberdéfense
+
+Dans cette partie, nous allons parler de ce que tout le monde peut faire pour se protéger des attaques. Nous allons aussi parler du travail des personnes travaillant dans la cyberdéfense et pourquoi ce travail est important.
+Les bonnes pratiques de cyber sécurité à l’échelle humaine
+
+Il est important de se protéger soi-même contre les cybers attaques, mais également dans le but de protéger les autres. En effet, les malwares se propagent très facilement. Quelques bonnes pratiques de cyber sécurité peuvent être adoptées.
+Dans un premier temps, il faut utiliser des mots de passe forts et uniques pour protéger les comptes et les systèmes contre les pirates informatiques. Un mot de passe fort doit être composé de lettres, de chiffres et de symboles et doit être difficile à deviner. Il est fortement recommandé de ne pas utiliser le même mot de passe pour plusieurs comptes ou de le partager avec d'autres personnes. Pour protéger les mots de passe lorsqu’ils deviennent trop nombreux et difficiles à retenir, il est possible d’utiliser des “coffres forts” pour stocker les mots de passe de manière sécurisée. Bien sûr, il faut trouver des logiciels fiables qui ne stockent pas les données en clair, et qui cryptent les données.
+
+Naturellement, il ne faut pas cliquer sur des liens ou télécharger des fichiers provenant de sources non fiables, car cela peut entraîner le téléchargement de logiciels malveillants sur l’ordinateur. Si on reçoit un lien ou un fichier suspect par courriel, par SMS ou sur les réseaux sociaux, il est préférable de vérifier l'authenticité de la source avant de cliquer sur le lien ou de télécharger le fichier. Il vaut mieux se rendre directement sur le site plutôt que de passer par le lien reçu.
+
+Il est recommandé d'utiliser un logiciel de sécurité, tel qu'un pare-feu ou un antivirus, pour protéger l’ordinateur contre les logiciels malveillants et les virus. Il faut mettre à jour régulièrement le logiciel de sécurité pour disposer de la dernière protection contre les menaces en ligne.
+
+De même, il faut tenir à jour tous les logiciels installés sur l’ordinateur. Garder les logiciels et les systèmes d'exploitation à jour est l'une des meilleures façons de se protéger contre les ransomwares. Les mises à jour de sécurité corrigent les failles de sécurité qui peuvent être exploitées par les ransomwares, tandis que les mises à jour de logiciels apportent de nouvelles fonctionnalités et améliorent la performance.
+
+Il est important de protéger les données sensibles, telles que les mots de passe, les numéros de carte de crédit et les informations personnelles, contre les fuites ou les accès non autorisés. Cela peut être fait en utilisant des protocoles de chiffrement pour protéger les données lorsqu'elles sont transmises sur Internet ou en stockant les données sensibles de manière sécurisée. Si possible, il est recommandé d’activer les doubles authentifications.
+
+En cas d’attaque, il faut la signaler à un responsable de la sécurité ou à un supérieur. En effet, beaucoup de personnes ne sont pas à l’aise avec les nouvelles technologies et ne connaissent pas les bonnes pratiques pour prévenir les attaques. Cela peut être dangereux dans une entreprise, c’est pourquoi les employés reçoivent la plupart du temps une formation sur les possibles cyberattaques dès leur arrivée dans l’entreprise.
+Les acteurs qui travaille à notre protection
+Il existe une myriade de personnes, de différents métiers et domaines, qui travaillent dans la sécurité informatique . En voici quelques exemples dans une liste :
+
+Les professionnels de la cybersécurité sont des personnes  formées dans le domaine dans ce domaine et sont responsables de la mise en œuvre et de la maintenance des systèmes de sécurité, de l'analyse des données de sécurité et de la réponse aux failles de sécurité. Elles peuvent travailler pour diverses organisations, notamment des agences gouvernementales ou des entreprises. Les analystes de sécurité, les ingénieurs de sécurité et les consultants en sécurité en sont quelques exemples.
+
+Les fournisseurs de logiciels de sécurité sont des entreprises qui développent et vendent des logiciels de sécurité aux particuliers et aux organisations. Les logiciels de sécurité peuvent inclure des antivirus, des pare-feu, des systèmes de détection des intrusions...Ces fournisseurs peuvent également proposer des services, tels que des évaluations de la sécurité informatique d’une entreprise ou des tests de vulnérabilité et des réponses aux incidents.
+
+ Les gouvernements du monde entier disposent d'agences ou de départements de cybersécurité chargés de protéger leurs citoyens et leurs infrastructures contre les cybermenaces. Ces agences peuvent être chargées d'élaborer et de mettre en œuvre des politiques de sécurité nationale, ainsi que de répondre aux cyber incidents. Elles peuvent également travailler avec des organisations internationales pour coordonner les efforts et élaborer des normes mondiales en matière de cybersécurité.
+
+Les organisations internationales  jouent un rôle dans la cybersécurité, comme les Nations unies et l'Union européenne. Ces organisations peuvent œuvrer à la coordination des efforts entre différents pays et à l'élaboration de normes et de lignes directrices internationales en matière de cybersécurité. Elles peuvent également fournir un financement et un soutien à la recherche et au développement en matière de cybersécurité.
+
+Il y a bien sûr de nombreuses autres organisations et personnes qui contribuent au domaine de la cybersécurité. Par exemple, les chercheurs universitaires et les étudiants peuvent travailler au développement de nouvelles technologies et techniques pour améliorer la sécurité, tandis que les médias peuvent rendre compte des problèmes de cybersécurité et sensibiliser aux menaces potentielles.
+
+=> faire mini conclu,pas inspirer
+
+Conclusion
+
+Pour conclure, la Russie s'est engagée dans diverses formes de guerre de l'information dans le but de promouvoir ses intérêts et d'influencer les événements mondiaux. Elle a notamment eu recours à la propagande et à la désinformation pour façonner l'opinion publique et semer la discorde dans d'autres pays, ainsi qu'à des campagnes d'influence en ligne pour manipuler les plateformes et diffuser de la désinformation. Ces tactiques ont été utilisées pour s'ingérer dans les élections, miner la crédibilité des institutions démocratiques et promouvoir les objectifs de la politique étrangère russe.
+
+En plus de ces formes plus traditionnelles de guerre de l'information, la Russie a également été liée à un certain nombre de cyberattaques très médiatisées menées par des groupes tels que Fancy Bear (APT28) et Cozy Bear (APT29). Ces groupes ont ciblé des gouvernements, des organisations militaires, des groupes de réflexion et d'autres groupes impliqués dans les affaires internationales, et ont été responsables du vol d'informations sensibles et de la perturbation d'infrastructures informatiques. Ces attaques ont démontré la volonté de la Russie d'utiliser des capacités cyber dans le cadre de ses efforts de guerre de l'information, et ont suscité des inquiétudes quant à la possibilité que de futures cyberattaques causent des dommages plus importants.
+
+Pour répondre à ces menaces , de multiples acteurs travaillent pour garantir la sécurité de tous en développant des outils, cherchant des failles ou  en faisant de la prévention. Ces acteurs ont permis d’avoir des solutions pour pouvoir se protéger un minimum, comme l'utilisation de VPN, d’antivirus ou de pare-feu. Néanmoins, le cyber évolue en permanence, et les attaques malveillantes aussi,on est donc en “guerre” perpétuelle pour se défendre.
+
+Enfin, les différents visages de la guerre de l'information menée par la Russie mettent en évidence la détermination du pays à s'affirmer comme un acteur majeur sur la scène mondiale et à façonner les événements mondiaux dans un sens favorable à ses intérêts. Ces tactiques ont eu un impact significatif sur les relations internationales et ont soulevé des questions importantes sur le rôle de l'information et de la technologie dans la guerre moderne. Nous pouvons légitimement se poser la question si le cyber ne vas pas devenir le champ de bataille principale entres nations et organisations tant les dégâts causés peuvent être importants et avantageux par rapport à une guerre plus “classique”.
+
+
+Sources
+Nous avons utilisé plusieurs  articles en plus que ceux qui nous ont été proposés pour réaliser ce rapport. Les voicis :
+
+The 2008 Russian Cyber-Campaign Against Georgia :
+https://www.researchgate.net/publication/230898147_The_2008_Russian_Cyber-Campaign_Against_Georgia
+
+Russian ‘Hacktivists’ Are Causing Trouble Far Beyond Ukraine :
+https://www.wired.co.uk/article/russia-hacking-xaknet-killnet
+
+Les figures de la propagande du Kremlin : Margarita Simonyan
+https://www.state.gov/disarming-disinformation/les-figures-de-la-propagande-du-kremlin-margarita-simonyan/
+
+Wikipédia du groupe APT29
+https://en.wikipedia.org/wiki/Cozy_Bear
+
+Guerre de l’information :  Le web russe dans le conflit en Ukraine
+www.ifri.org
