@@ -1,9 +1,17 @@
 from time import time, sleep
 import socket
+import json
+from dotenv import load_dotenv
+import os 
+from signal import signal, SIGPIPE, SIG_DFL
+signal(SIGPIPE,SIG_DFL)
 
-HOST = "127.0.0.1"  # The server's hostname or IP address
-PORT = 65444  # The port used by the server
-CHUNK_SIZE = 16384
+load_dotenv()
+HOST = os.getenv('HOST')
+PORT = int(os.getenv('PORT'))
+NB_REDUCERS = int(os.getenv('NB_REDUCERS'))
+NB_MAPPERS = int(os.getenv('NB_MAPPERS'))
+CHUNK_SIZE = int(os.getenv('CHUNK_SIZE'))
 
 start = time()
 
@@ -17,13 +25,14 @@ def map(content, nb_reducers):
     content = content.replace("\\t"," ")
     content = content.replace("!"," ")
     content = content.lower()
-    result = {}
+    result = [{} for _ in range(nb_reducers)]
     for word in content.split(" "):
-        # reducer_id = len(item[0]) % nb_reducers
-        if word in result:
-            result[word] += 1
-        else : 
-            result[word] = 1
+        if(len(word) > 0):
+            reducer_id = len(word) % nb_reducers
+            if word in result[reducer_id]:
+                result[reducer_id][word] += 1
+            else : 
+                result[reducer_id][word] = 1
     
     return result
 
@@ -42,7 +51,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # ==================== GET MAPPER ID ==================== 
     s.sendall(b"mapper")
     d1 = s.recv(1024)
-    id = int.from_bytes(d1, 'little', signed=False)
+    id = int.from_bytes(d1, 'little', signed=True)
+    if id == -1:
+        print("Mapping not needed")
+        s.close()
+        exit(0)
 
     # ==================== GET NUMBER OF REDUCERS ====================
     s.sendall(b"nbreducers")
@@ -79,9 +92,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     # ==================== SENDING DATA BACK ====================
     s.sendall(b"map_size")
-    string = ""
-    for item in m.items():
-        string += f"{item[0]} {item[1]}\n"
+    string = json.dumps(m)
+    string = string.replace(", \"", ",\n \"")
     string_bytes = string.encode("utf-8")
 
     length = len(string.split("\n"))
