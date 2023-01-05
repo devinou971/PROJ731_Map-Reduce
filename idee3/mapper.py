@@ -1,9 +1,9 @@
-from time import time
+from time import time, sleep
 import socket
 
 HOST = "127.0.0.1"  # The server's hostname or IP address
 PORT = 65444  # The port used by the server
-CHUNK_SIZE = 2048
+CHUNK_SIZE = 16384
 
 start = time()
 
@@ -17,13 +17,13 @@ def map(content, nb_reducers):
     content = content.replace("\\t"," ")
     content = content.replace("!"," ")
     content = content.lower()
-    result = [{} for i in range(nb_reducers)]
+    result = {}
     for word in content.split(" "):
-        reducer_id = len(word) % nb_reducers
-        if word in result[reducer_id]:
-            result[reducer_id][word] += 1
+        # reducer_id = len(item[0]) % nb_reducers
+        if word in result:
+            result[word] += 1
         else : 
-            result[reducer_id][word] = 1
+            result[word] = 1
     
     return result
 
@@ -37,29 +37,33 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         except:
             PORT += 1
             ok = True
-    
-    print(PORT)
+    print("Sever port:", PORT)
+
+    # ==================== GET MAPPER ID ==================== 
     s.sendall(b"mapper")
     d1 = s.recv(1024)
     id = int.from_bytes(d1, 'little', signed=False)
 
+    # ==================== GET NUMBER OF REDUCERS ====================
     s.sendall(b"nbreducers")
     d2 = s.recv(1024)
     nb_reducers = int.from_bytes(d2, 'little', signed=False)
     
-    print(f"Id {id} ({d1}), nb Reducers : {nb_reducers} ({d2})")
+    print(f"Id {id}, nb Reducers : {nb_reducers}")
 
+    # ==================== GET DATA LENGTH ====================
     s.sendall(b"text_length")
-    d3  = s.recv(CHUNK_SIZE)
+    d3  = s.recv(1024)
     text_length_str = d3.decode("utf-8")
     text_length = int(text_length_str)
-    print(f"Text length : {text_length} bytes")
+    print(f"Text length : {text_length} lines")
 
     # ==================== GETTING DATA ====================
     print("Downloading text ... ", end="")
     s.sendall(b"text")
+    i = 0
     content = ""
-    for i in range(0, text_length, CHUNK_SIZE):
+    while len(content.split("\n")) < text_length:
         d = s.recv(CHUNK_SIZE)
         content += d.decode("utf-8")
     print("Done")
@@ -70,24 +74,27 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("Done")
     s.sendall(b"finished")
 
-    # ==================== WAITING FOR THE GO ====================
-    data = s.recv(1024)
-    print(data)
+    # ==================== WAITING FOR THE GO SIGNAL ====================
+    s.recv(1024)
 
     # ==================== SENDING DATA BACK ====================
-
-    s.sendall(b"sending_map")
+    s.sendall(b"map_size")
+    string = ""
     for item in m.items():
-        string = f"{item[0]} {item[1]}"
-        s.sendall(bytes(string, encoding="utf-8"))
-    s.sendall(b"finished")
-    
+        string += f"{item[0]} {item[1]}\n"
+    string_bytes = string.encode("utf-8")
 
-    # Just used to pause the thing.
-    
-
-
+    length = len(string.split("\n"))
+    length_bytes = length.to_bytes(4, "big")
+    print("Send the size of the map", length)
+    s.sendall(length_bytes)
+    print("Sent Map Size")
+    # Waiting for the "ok" instruction 
     data = s.recv(1024)
-    print(data)
+    print("Sending back the map ...", end="")
+    s.sendall(string_bytes)
+    data = s.recv(1024)
+    print("Done")
+    
     end = time()
     print("Time taken :", end - start)
