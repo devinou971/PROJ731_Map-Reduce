@@ -28,6 +28,56 @@ Une fois que tous les mappers ont finis, le manager lance les reducers.
 Le faire toujours sur 1 machine, mais cette fois ci, 
 au lieu de faire le multiprocessing dans 1 fichier python, on va implémenter 1 manager qui lance d'autres fichiers python pour les mappers et reducers pour voir si ça change quoi que ce soit au niveaux du temps.   
 
+--- 
+# Idée 3 : Sockets
+
+Il y a 1 Socket Server qui sert de manager.
+
+X sockets pour les mappers.
+Y sockets pour les reducers.
+
+Le manager utilise du mutlithreading pour génrer les socket clients.
+
+Voila les interactions avec un mapper : 
+
+*Mapper* envoie `mapper` au **Manager**
+**Manager** envoie id au *Mapper*
+*Mapper* envoie `nbreducers` au **Manager**
+**Manager** envoie le nombre de reducer au *Mapper*
+*Mapper* envoie `text_length` au **Manager**
+**Manager** envoie la longueur du texte au *Mapper*
+*Mapper* envoie `text` au **Manager**
+**Manager** envoie la partie du texte au *Mapper*
+
+*Mapper* fait sa map et le shuffle
+
+*Mapper* envoie `finished` au **Manager**
+**Manager** envoie `go` au *Mapper*
+*Mapper* envoie `map_size` au **Manager**
+*Mapper* envoie la taille de la map au **Manager**
+**Manager** envoie `ok` au *Mapper*
+*Mapper* envoie toute sa map au **Manager**
+**Manager** envoie `ok` au *Mapper*
+
+--> Fin de tache du Mapper
+
+Voila les interactions avec un reducer : 
+
+*Reducer* envoie `reducer` au **Manager**
+**Manager** envoie id au *Reducer*
+
+**Manager** attends que les mappers soient fini
+
+**Manager** envoie la taille des maps au *Reducers* 
+*Reducer* envoie `ok` au **Manager**
+**Manager** envoie les maps au *Reducer*
+
+*Reducer* fait le reduce
+
+--> Fin de tache du Reducer
+
+
+
 ---
-## Idée 3 : reducers variables
+## Idée 4 : reducers variables
 => Calculer le nombre de mapper et reducers necessaires

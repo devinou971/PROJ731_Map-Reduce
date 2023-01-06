@@ -56,7 +56,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     # ==================== GETTING MAPS ====================
     print("Downloading text ... ", end="")
-    s.sendall(b"map_text")
     content = ""
     while len(content.split("\n")) < text_length:
         d = s.recv(CHUNK_SIZE)
