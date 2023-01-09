@@ -1,33 +1,31 @@
 from time import time
-import socket
+from socket import socket, AF_INET, SOCK_STREAM
 import threading 
-import json
+from json import loads, dumps
 from dotenv import load_dotenv
-import os 
-from os import listdir
+from os import listdir, getenv, remove
 from signal import signal, SIGPIPE, SIG_DFL
 signal(SIGPIPE,SIG_DFL)
-# from MapperThread import MapperThread
-# from ReducerThread import ReducerThread
 
 load_dotenv()
-HOST = os.getenv('HOST')
-PORT = int(os.getenv('PORT'))
-NB_REDUCERS = int(os.getenv('NB_REDUCERS'))
-NB_MAPPERS = int(os.getenv('NB_MAPPERS'))
-CHUNK_SIZE = int(os.getenv('CHUNK_SIZE'))
-
-start = time()
+HOST = getenv('HOST')
+PORT = int(getenv('PORT'))
+NB_REDUCERS = int(getenv('NB_REDUCERS'))
+NB_MAPPERS = int(getenv('NB_MAPPERS'))
+CHUNK_SIZE = int(getenv('CHUNK_SIZE'))
 
 current_mapper_id = 0
 current_reducer_id = 0
 ready = [False for _ in range(NB_MAPPERS)]
+reducing_finished = [False for _ in range(NB_REDUCERS)]
 
 threads = []
-files = ["../data/bible.txt"]
+files = ["../data/mon_combat_utf8.txt"]
 file_contents = []
 for file in files:
+    # ISO-8859-1
     with open(file, "r", encoding="utf8") as f:
+    # with open(file, "r", encoding="ISO-8859-1") as f:
         file_contents += f.readlines()
 
 class MapperThread(threading.Thread):
@@ -95,12 +93,11 @@ class MapperThread(threading.Thread):
                 print(f"Mapper {self.id} has finished sending raw data")
                 self.clientsocket.sendall(bytes(answer, encoding="utf-8"))
                 
-                # received_text = received_text.replace(", \"", ", \n \"")
-                maps = json.loads(received_text)
+                maps = loads(received_text)
                 for i in range(NB_REDUCERS) : 
                     with open(f"outputs/m{self.id}_r{i}.json", "w", encoding="utf-8") as f:
                         m = maps[i]
-                        text = json.dumps(m).replace(", \"", ", \n \"")
+                        text = dumps(m).replace(", \"", ", \n \"")
                         f.write(text)
 
                 ready[self.id] = True
@@ -127,7 +124,7 @@ class ReducerThread(threading.Thread):
 
 
     def run(self): 
-        global current_mapper_id, current_reducer_id, ready
+        global ready
         print("Connection from %s %s" % (self.ip, self.port))
 
         while ready != [True for _ in range(NB_REDUCERS)]:
@@ -137,6 +134,7 @@ class ReducerThread(threading.Thread):
         print(self.type, self.id, "disconnected ...")
     
     def setup_reducer(self):
+        global reducing_finished
         map_files = listdir("outputs")
         all_maps = "["
         for map_file in map_files:
@@ -158,7 +156,19 @@ class ReducerThread(threading.Thread):
         # Sending the full maps
         self.clientsocket.sendall(bytes(all_maps, encoding="utf-8"))
 
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s : 
+        # Wait for the reducer to finish it's task
+        self.clientsocket.recv(1024)
+        self.clientsocket.close()
+        reducing_finished[self.id] = True
+
+# Purging the output folder 
+for i in listdir("outputs"):
+    remove("outputs/"+i)
+
+start = time()
+
+# Starting the main manager process
+with socket(AF_INET, SOCK_STREAM) as s : 
     ok = False
     while not ok:
         try:
@@ -167,12 +177,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s :
             PORT += 1
             ok = True
     print("Sever starting at port", PORT)
-    s.listen(10)
-    while(True) :
+    s.listen(100)
+    while current_mapper_id < NB_MAPPERS - 1 or current_reducer_id < NB_REDUCERS :
         (clientsocket, (ip, port)) = s.accept()
         thread_type = clientsocket.recv(1024)
         if thread_type == b"mapper":
-
             print(current_mapper_id < NB_MAPPERS)
             if current_mapper_id < NB_MAPPERS:
                 clientsocket.sendall(current_mapper_id.to_bytes(2, 'little', signed=True))
@@ -194,7 +203,18 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s :
                 clientsocket.sendall(not_allowed.to_bytes(2, 'little', signed=True))
         
         threads.append(newthread)
-        
-    # end = time()
-    # print("Time taken :", end - start)
-        
+
+all_true = [True for _ in range(NB_REDUCERS)]
+while reducing_finished != all_true:
+    pass
+final_file_content = ""
+for filename in listdir("outputs"):
+    if filename.startswith("r") and filename.endswith(".json"):
+        with open("outputs/"+filename, "r", encoding="utf-8") as f:
+            final_file_content += f.read()[1:-1] + ","
+
+final_file_content = "{" + final_file_content[:-1] + "}" 
+
+with open("outputs/wordlist.json", "w", encoding="utf-8") as f:
+    f.write(final_file_content)
+print("Manager finished")

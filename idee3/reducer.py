@@ -71,5 +71,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         f.write(json.dumps(reduced_map))
     print("Done")
 
+
+    # ==================== INFORM SERVER OF SUCCESS ====================
+    s.sendall(b"done")
+
     end = time()
     print("Time taken :", end - start)

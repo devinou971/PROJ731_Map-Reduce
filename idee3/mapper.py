@@ -1,4 +1,4 @@
-from time import time, sleep
+from time import time
 import socket
 import json
 from dotenv import load_dotenv
@@ -14,7 +14,6 @@ NB_MAPPERS = int(os.getenv('NB_MAPPERS'))
 CHUNK_SIZE = int(os.getenv('CHUNK_SIZE'))
 
 start = time()
-
 
 def map(content, nb_reducers):
     content = content.replace(",", " ")
@@ -76,9 +75,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.sendall(b"text")
     i = 0
     content = ""
-    while len(content.split("\n")) < text_length:
-        d = s.recv(CHUNK_SIZE)
-        content += d.decode("utf-8")
+    byte_content = b""
+    while len(byte_content.split(b"\n")) < text_length:
+        byte_content += s.recv(CHUNK_SIZE)
+        # print(len(content.split("\n")), text_length)
+    content = byte_content.decode("utf-8")
     print("Done")
 
     # ==================== MAPPING ====================
