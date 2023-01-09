@@ -85,9 +85,6 @@ class MapperThread(threading.Thread):
                 answer = f"ok{self.id}" 
                 self.clientsocket.sendall(bytes(answer, encoding="utf-8"))
 
-                # while len(received_text.split("\n")) < length:
-                #     d = self.clientsocket.recv(CHUNK_SIZE)
-                #     received_text += d.decode("utf-8")
                 while len(received_bytes.split(b"\n")) < length:
                     received_bytes += self.clientsocket.recv(CHUNK_SIZE)
                 received_text = received_bytes.decode("utf-8")
@@ -158,8 +155,27 @@ class ReducerThread(threading.Thread):
         # Sending the full maps
         self.clientsocket.sendall(bytes(all_maps, encoding="utf-8"))
 
-        # Wait for the reducer to finish it's task
+        # We then need to receive the reduced map : 
+        length_str = self.clientsocket.recv(1024).decode("utf-8")
+        length = int(length_str)
+
+        self.clientsocket.sendall(b"ok")
+
+        received_text = ""
+        received_bytes = b""
+
+        while len(received_bytes.split(b"\n")) < length:
+            received_bytes += self.clientsocket.recv(CHUNK_SIZE)
+        received_text = received_bytes.decode("utf-8")
+
+        with open(f"outputs/r{self.id}.json", "w", encoding="utf-8") as f :
+            f.write(received_text)
+
+        self.clientsocket.sendall(bytes("received", encoding="utf-8"))
+
+        # Wait for the reducer to return the ok
         self.clientsocket.recv(1024)
+
         self.clientsocket.close()
         reducing_finished[self.id] = True
 

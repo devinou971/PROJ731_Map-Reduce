@@ -55,9 +55,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     # ==================== GETTING MAPS ====================
     print("Downloading text ... ", end="")
     content = ""
-    while len(content.split("\n")) < text_length:
-        d = s.recv(CHUNK_SIZE)
-        content += d.decode("utf-8")
+    byte_content = b""
+    while len(byte_content.split(b"\n")) < text_length:
+        byte_content += s.recv(CHUNK_SIZE)
+    content = byte_content.decode("utf-8")
     maps = json.loads(content)
     print("Done")
 
@@ -65,11 +66,22 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("Reducing maps ... ", end="")
     reduced_map = reduce(maps)
 
-    with open(f"outputs/r{id}.json", "w", encoding="utf-8") as f :
-        f.write(json.dumps(reduced_map))
+    # with open(f"outputs/r{id}.json", "w", encoding="utf-8") as f :
+    #     f.write(json.dumps(reduced_map))
+
+    text_reduce = json.dumps(reduced_map)
+    text_reduce = text_reduce.replace(",",",\n")
+
+    length = len(text_reduce.split("\n"))
+    length_str = str(length)
+
+    s.sendall(bytes(length_str, encoding="utf-8"))
+    s.recv(1024)
+
+    s.sendall(bytes(text_reduce, encoding="utf-8"))
     print("Done")
 
-
+    s.recv(1024)
     # ==================== INFORM SERVER OF SUCCESS ====================
     s.sendall(b"done")
 
