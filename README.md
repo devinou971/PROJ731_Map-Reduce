@@ -74,8 +74,11 @@ Voila les interactions avec un reducer :
 
 *Reducer* fait le reduce
 
---> Fin de tache du Reducer
+*Reducer* envoie la taille du résultat au **Manager**
+**Manager** envoie `ok` au *Reducer*
+*Reducer* envoie tout le résultat au **Manager** 
 
+--> Fin de tache du Reducer
 
 
 ---

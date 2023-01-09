@@ -66,9 +66,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     print("Reducing maps ... ", end="")
     reduced_map = reduce(maps)
 
-    # with open(f"outputs/r{id}.json", "w", encoding="utf-8") as f :
-    #     f.write(json.dumps(reduced_map))
-
     text_reduce = json.dumps(reduced_map)
     text_reduce = text_reduce.replace(",",",\n")
 
