@@ -3,8 +3,6 @@ import socket
 import json
 from dotenv import load_dotenv
 import os 
-from signal import signal, SIGPIPE, SIG_DFL
-signal(SIGPIPE,SIG_DFL)
 
 load_dotenv()
 HOST = os.getenv('HOST')

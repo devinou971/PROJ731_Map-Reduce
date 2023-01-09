@@ -4,8 +4,6 @@ import threading
 from json import loads, dumps
 from dotenv import load_dotenv
 from os import listdir, getenv, remove
-from signal import signal, SIGPIPE, SIG_DFL
-signal(SIGPIPE,SIG_DFL)
 
 load_dotenv()
 HOST = getenv('HOST')
@@ -81,15 +79,19 @@ class MapperThread(threading.Thread):
                 length = int.from_bytes(self.clientsocket.recv(1024), "big")
                 print("Length of data :", length)
                 received_text = ""
+                received_bytes = b""
                 
                 # We are ready to receive the map
                 answer = f"ok{self.id}" 
                 self.clientsocket.sendall(bytes(answer, encoding="utf-8"))
 
-                while len(received_text.split("\n")) < length:
-                    d = self.clientsocket.recv(CHUNK_SIZE)
-                    received_text += d.decode("utf-8")
-                
+                # while len(received_text.split("\n")) < length:
+                #     d = self.clientsocket.recv(CHUNK_SIZE)
+                #     received_text += d.decode("utf-8")
+                while len(received_bytes.split(b"\n")) < length:
+                    received_bytes += self.clientsocket.recv(CHUNK_SIZE)
+                received_text = received_bytes.decode("utf-8")
+
                 print(f"Mapper {self.id} has finished sending raw data")
                 self.clientsocket.sendall(bytes(answer, encoding="utf-8"))
                 

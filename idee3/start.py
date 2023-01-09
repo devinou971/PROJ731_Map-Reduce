@@ -2,7 +2,6 @@ import os
 from time import sleep
 from dotenv import load_dotenv
 import os 
-from time import time
 
 load_dotenv()
 NB_REDUCERS = int(os.getenv('NB_REDUCERS'))
