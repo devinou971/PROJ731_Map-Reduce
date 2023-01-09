@@ -1,21 +1,26 @@
+import datetime
 from itertools import chain
 
 import pandas as pd
 
 
 
-files=["data/Le-seigneur-des-anneaux-tome-1_1.txt"]
+files=["data/Le-seigneur-des-anneaux-tome-1_1.txt","data/Le-seigneur-des-anneaux-tome-1.txt"]
 
-
+str_long=[]
 for file in files:
     with open(file) as f:
         lines = f.readlines()
+        str_long.append(lines)
 tab_words=[]
-for x in lines:
-    tab_temp=x.split(" ")
-    for y in tab_temp:
-        if y !="," and y!="\n"and y!="." and y!="":
-            tab_words.append(y.lower())
+
+start_time=datetime.datetime.now()
+for x in str_long:
+    for k in x:
+        tab_temp=k.split(" ")
+        for y in tab_temp:
+            if y !="," and y!="\n"and y!="." and y!="":
+                tab_words.append(y.lower())
 print(len (tab_words))
 
 tab_res=[]
@@ -33,7 +38,9 @@ for x in tab_words:
     if (x not in chain(*tab_res)):
         tab_res.append([x,tab_words.count(x)])
 
+end_time=datetime.datetime.now()
 
-print(tab_res)
+print(end_time-start_time)
+
 
 

@@ -3,7 +3,7 @@ import multiprocessing
 import json
 import os
 import collections
-start = time()
+
 
 files = ["../data/the-full-bee-movie-script.txt", "../data/test1.txt", "../data/Le-seigneur-des-anneaux-tome-1.txt", "../data/Le-seigneur-des-anneaux-tome-1_1.txt", "../data/bible.txt"]
 
@@ -55,10 +55,15 @@ def sinchronyze(results):
     res_temp.append(results)
 
 if __name__ == "__main__":
+    for file in os.listdir("."):
+        if file.endswith(".json"):
+            os.remove(file)
+
+    start = time()
     ctx = multiprocessing.get_context("spawn")
     res_temp=[]
-    nb_mapper = 4
-    nb_reducer = 4
+    nb_mapper = 3
+    nb_reducer = 3
     incr = 0
     
     files_content = []
