@@ -6,12 +6,14 @@ On fait le projet en Python
 Ne pas faire de map-reduce : 
 Juste compter les mots en faisant une grosse boucle sur le fichier d'originie pour compter le nombre d'itérations des mots. 
 
+La version la plus simple.
+
 ---
 ## Idée 1 : 
 
 Le faire juste sur 1 machine en multiprocessing :  \
 1 fichier de base : et on le divise en autant de mappers que l'on a. \
-On fait autant de processus que de matppers et ils comptes les mots dans le fichier. \
+On fait autant de processus que de mappers et ils comptes les mots dans le fichier. \
 Les mappers font ensuite le hashage des mots avec le modulo : length % nb_reducer \
 et mettes les résultats dans des fichiers \
 m1_r1 \
@@ -23,10 +25,16 @@ etc.
 
 Une fois que tous les mappers ont finis, le manager lance les reducers.
 
+Ils vont lire les fichiers qui leurs correspondent  et mettre le résultat dans une liste.
+
+Enfin,une fois que tous les reducers ont finis, on rassemble les dico ,on trie par ordre décroissant et on écrit le résultat dans un fichier texte.
+
 ---
 ## Idée 2 :
 Le faire toujours sur 1 machine, mais cette fois ci, 
-au lieu de faire le multiprocessing dans 1 fichier python, on va implémenter 1 manager qui lance d'autres fichiers python pour les mappers et reducers pour voir si ça change quoi que ce soit au niveaux du temps.   
+au lieu de faire le multiprocessing dans 1 fichier python, on va faire du multithreading. Néanmoins, cela n'est pas vraiment possible en python. \
+En fait, un processus Python ne peut pas exécuter des threads en parallèle, mais il peut les exécuter simultanément grâce au changement de contexte pendant les opérations liées aux E/S. \
+En python,le multiprocessing utilise le parallélisme, le multithreading utilise la concurrence.
 
 --- 
 # Idée 3 : Sockets
@@ -36,7 +44,7 @@ Il y a 1 Socket Server qui sert de manager.
 X sockets pour les mappers.
 Y sockets pour les reducers.
 
-Le manager utilise du mutlithreading pour génrer les socket clients.
+Le manager utilise du mutlithreading pour gérer les socket clients.
 
 Voila les interactions avec un mapper : 
 
