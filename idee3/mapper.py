@@ -40,9 +40,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     while not ok:
         try:
             s.connect((HOST, PORT))
+            ok = True
         except:
             PORT += 1
-            ok = True
     print("Sever port:", PORT)
 
     # ==================== GET MAPPER ID ==================== 
