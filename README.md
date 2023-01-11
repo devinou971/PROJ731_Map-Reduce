@@ -50,6 +50,8 @@ Il y a 1 Socket Server qui sert de manager.
 X sockets pour les mappers.
 Y sockets pour les reducers.
 
+Vous pouvez changer X et Y en changeant le fichier `.env`
+
 Le manager utilise du mutlithreading pour gérer les socket clients.
 
 Voila les interactions avec un mapper : 
