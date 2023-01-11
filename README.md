@@ -41,6 +41,7 @@ En fait, un processus Python ne peut pas réellement exécuter des threads en pa
 En python,le multiprocessing utilise le parallélisme, le multithreading utilise la concurrence.
 
 Une chose intéressante à noter est que le multi-threading est plus rapide que le multi-processing, ce qui n'est normalement pas logique en python. Il faudrait en chercher la cause.
+
 --- 
 # Idée 3 : Sockets
 
