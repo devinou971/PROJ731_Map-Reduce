@@ -95,6 +95,3 @@ Voila les interactions avec un reducer :
 --> Fin de tache du Reducer
 
 
----
-## Idée 4 : reducers variables
-=> Calculer le nombre de mapper et reducers necessaires
