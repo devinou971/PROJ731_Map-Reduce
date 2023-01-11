@@ -5,7 +5,7 @@ import os
 import collections
 start = time()
 
-files = ["../data/the-full-bee-movie-script.txt", "../data/test1.txt", "../data/Le-seigneur-des-anneaux-tome-1.txt", "../data/Le-seigneur-des-anneaux-tome-1_1.txt", "../data/bible.txt"]
+files = ["../data/combat_zip/mon_combat_gros.txt"]
 
 def mapper(file_content, nb_reducer, mapper_id):
     file_content = file_content.replace(",", " ")
@@ -55,31 +55,35 @@ def sinchronyze(results):
     res_temp.append(results)
 
 if __name__ == "__main__":
+    #On récupere le nomnbre de coeur de l'appareil
     ctx = multiprocessing.get_context("spawn")
     res_temp=[]
     nb_mapper = 4
-    nb_reducer = 4
+    nb_reducer = 3
     incr = 0
     
     files_content = []
 
     for f in files:
-        with open(f, "r", encoding="utf8") as file:
+        with open(f, "r", encoding="ISO-8859-1") as file:
             files_content += file.readlines()
 
     nb_line = len(files_content)
-    print(nb_line)
-    
+
+    # On cree une pool de processus qui va les creer
     with ctx.Pool(processes=nb_mapper) as p:
         for x in range(0, nb_mapper):
-            print(nb_line/nb_mapper * x)
+
             files_content[int(nb_line/nb_mapper * x):int(nb_line/nb_mapper * (x+1))]
+            #Chaque processus va appeller la fonction mapper en async
             p.apply_async(mapper, [" ".join(files_content), nb_reducer, x])
             incr += 1
+        #On attend la fin de tous les processus et on les ferme
         p.close()
         p.join()
         p.terminate()
 
+    #On refait la meme chose pour les reducer
     with ctx.Pool(processes=nb_reducer) as p:
         for x in range(0, nb_reducer):
             p.apply_async(reducer, [x],callback=sinchronyze)
@@ -87,6 +91,8 @@ if __name__ == "__main__":
         p.close()
         p.join()
         p.terminate()
+
+    #On rassemble les dico des reducers en un seul et on le trie
     dict_res={}
     for x in res_temp:
         dict_res.update(x)

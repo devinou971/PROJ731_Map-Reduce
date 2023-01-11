@@ -5,11 +5,13 @@ import pandas as pd
 
 import datetime
 
-files=["data/text_1.txt"]
+
+# Ici, on fait la version la + simple du comptage de mots
+files=["../data/combat_zip/mon_combat_gros.txt"]
 
 time_start=datetime.datetime.now()
 for file in files:
-    with open(file,encoding="utf8") as f:
+    with open(file,encoding="ISO-8859-1") as f:
         lines = f.readlines()
 tab_words=[]
 print(len(lines))
@@ -43,7 +45,7 @@ for x in tab_words:
         tab_res.append([x,tab_words.count(x)])
 tab_res.sort(key=lambda x:x[1],reverse=True)
 time_end=datetime.datetime.now()
-print(tab_res)
+
 temps_exec=time_end-time_start
 print("Temps : " +str(temps_exec))
 
