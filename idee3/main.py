@@ -191,9 +191,9 @@ with socket(AF_INET, SOCK_STREAM) as s :
     while not ok:
         try:
             s.bind((HOST, PORT))
+            ok = True
         except:
             PORT += 1
-            ok = True
     print("Sever starting at port", PORT)
     s.listen(100)
     while current_mapper_id < NB_MAPPERS - 1 or current_reducer_id < NB_REDUCERS :
