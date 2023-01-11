@@ -5,8 +5,7 @@ import multiprocessing
 import json
 import os
 import collections
-import code_mapper
-import code_reducer
+
 from queue import Queue
 from threading import Thread
 
@@ -16,10 +15,11 @@ Il y a environ 2 220 000
 """
 
 
-files = [ "../data/combat_zip/mon_combat_gros.txt"]
+files = [ "../data/mon_combat_utf8.txt"]
 
 
 def mapper():
+    # Chaque thread va recuperer un element de la Queue
     data=q.get()
 
     file_content=data[0]
@@ -69,10 +69,12 @@ def mapper():
         with open(f"mappers/m{mapper_id}_r{i}.json", "w", encoding="utf8") as res_file:
             res_file.write(json.dumps(result[i]))
 
+    #On dit a la Queue que le thread est terminé
     q.task_done()
 
 
 def reducer():
+    #Meme fonctionnement que pour le mapper
     id_reducer=q.get()
 
     file_names = []
@@ -102,13 +104,14 @@ def reducer():
 
 if __name__ == "__main__":
     file_names = []
-
     for file in os.listdir("reducers/"):
             os.remove("reducers/"+file)
     for file in os.listdir("mappers/"):
         os.remove("mappers/" + file)
     star_time=datetime.datetime.now()
+    # On définie nos parametres
     NUM_THREADS = 10
+    # On va utiliser le module Queue pour faire passer des données vers les threads
     q = Queue()
     q2=Queue()
     nb_mapper =10
@@ -124,20 +127,21 @@ if __name__ == "__main__":
 
     nb_line = len(files_content)
 
-
+    # On met nos données dans la Queue
     for x in range(NUM_THREADS) :
         q.put([" ".join(files_content[int(nb_line/nb_mapper * x):int(nb_line/nb_mapper * (x+1))]),nb_reducer,x])
 
+    #On cree les threads
     for t in range(NUM_THREADS):
         worker = Thread(target=mapper)
         worker.daemon = True
         worker.start()
 
 
-
+    #On attend que tous les threads soit terminé
     q.join()
 
-
+    #On fait la meme chose ici
     for x in range(NUM_THREADS) :
         q.put(x)
     for t in range(NUM_THREADS):
@@ -161,6 +165,7 @@ if __name__ == "__main__":
         with open("reducers/"+file_name, "r", encoding="utf8") as file:
             contents.append(json.load(file))"""
 
+    #On fait la meme chose que pour le multiprocessing
     dict_res={}
 
     for x in res_temp:

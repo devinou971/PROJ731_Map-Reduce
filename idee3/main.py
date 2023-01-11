@@ -20,12 +20,13 @@ reducing_finished = [False for _ in range(NB_REDUCERS)]
 threads = []
 files = ["../data/mon_combat_utf8.txt"]
 file_contents = []
+print("Reading files")
 for file in files:
     # ISO-8859-1
     with open(file, "r", encoding="utf8") as f:
     # with open(file, "r", encoding="ISO-8859-1") as f:
         file_contents += f.readlines()
-
+print("Finished reding files")
 class MapperThread(threading.Thread):
     def __init__(self, ip, port, clientsocket, id, file_contents) -> None:
         threading.Thread.__init__(self)
@@ -50,13 +51,10 @@ class MapperThread(threading.Thread):
             if r == b"nbreducers":
                 self.clientsocket.sendall(NB_REDUCERS.to_bytes(2, 'little', signed=False))
             
-            elif r == b"nbmappers":
-                self.clientsocket.sendall(NB_MAPPERS.to_bytes(2, 'little', signed=False))
-
             elif r == b"text_length":
                 # We send the length of the texte first in bytes
                 print(f"Evaluating text size for mapper {self.id} ...")
-                text = " ".join(self.file_contents[int(self.nb_lines / NB_REDUCERS * self.id) : int(self.nb_lines / NB_REDUCERS * (self.id+1))])
+                text = " ".join(self.file_contents[int(self.nb_lines / NB_MAPPERS * self.id) : int(self.nb_lines / NB_MAPPERS * (self.id+1))])
                 text_to_send = bytes(text, encoding="utf8")
                 length = len(text.split("\n"))
                 length_str = bytes(str(length), encoding="utf8")
@@ -65,7 +63,7 @@ class MapperThread(threading.Thread):
             elif r == b"text":
 
                 # Then  we send all the text
-                text_to_send = " ".join(self.file_contents[int(self.nb_lines / NB_REDUCERS * self.id) : int(self.nb_lines / NB_REDUCERS * (self.id+1))])
+                text_to_send = " ".join(self.file_contents[int(self.nb_lines / NB_MAPPERS * self.id) : int(self.nb_lines / NB_MAPPERS * (self.id+1))])
                 text_to_send = bytes(text_to_send, encoding="utf8")
                 print(f"Sending text to mapper {self.id} ... ", end="")
                 self.clientsocket.sendall(text_to_send)
@@ -91,8 +89,10 @@ class MapperThread(threading.Thread):
 
                 print(f"Mapper {self.id} has finished sending raw data")
                 self.clientsocket.sendall(bytes(answer, encoding="utf-8"))
-                
-                maps = loads(received_text)
+                try:
+                    maps = loads(received_text)
+                except:
+                    print("received", length, received_bytes, received_text)
                 for i in range(NB_REDUCERS) : 
                     with open(f"outputs/m{self.id}_r{i}.json", "w", encoding="utf-8") as f:
                         m = maps[i]
@@ -126,8 +126,6 @@ class ReducerThread(threading.Thread):
         global ready
         print("Connection from %s %s" % (self.ip, self.port))
 
-        while ready != [True for _ in range(NB_REDUCERS)]:
-            pass
         self.setup_reducer()
 
         print(self.type, self.id, "disconnected ...")
@@ -211,16 +209,17 @@ with socket(AF_INET, SOCK_STREAM) as s :
                 clientsocket.sendall(not_allowed.to_bytes(2, 'little', signed=True))
         
         elif thread_type == b"reducer":
-            if current_reducer_id < NB_MAPPERS:
+            if current_reducer_id < NB_MAPPERS and current_mapper_id >= NB_MAPPERS - 1 and ready == [True for _ in range(NB_MAPPERS)]:
                 clientsocket.sendall(current_reducer_id.to_bytes(2, 'little', signed=True))
                 newthread = ReducerThread(ip, port, clientsocket, current_reducer_id, file_contents)
                 current_reducer_id += 1
                 newthread.start()
+                threads.append(newthread)
+
             else: 
                 not_allowed = -1
                 clientsocket.sendall(not_allowed.to_bytes(2, 'little', signed=True))
         
-        threads.append(newthread)
 
 all_true = [True for _ in range(NB_REDUCERS)]
 while reducing_finished != all_true:
