@@ -33,8 +33,6 @@ def map(content, nb_reducers):
     
     return result
 
-
-
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     ok = False
     while not ok:
