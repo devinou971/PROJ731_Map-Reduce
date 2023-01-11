@@ -1,21 +1,25 @@
 # PROJ731_Map-Reduce
 On fait le projet en Python
 
+Afin d'étudier le Map-Reduce, nous en avons faits plusieurs versions différentes.
+
+Dans chaque version ( excepter la 1ère ) , vous pouvez changer à votre guise le nombre de mappeur et de reducer.
+
 ---
 ## Idée 0 :
 Ne pas faire de map-reduce : 
-Juste compter les mots en faisant une grosse boucle sur le fichier d'originie pour compter le nombre d'itérations des mots. 
+Juste compter les mots en faisant une grosse boucle sur le fichier d'origine pour compter le nombre d'itérations des mots. 
 
 La version la plus simple.
 
 ---
 ## Idée 1 : 
 
-Le faire juste sur 1 machine en multiprocessing :  \
+Le faire juste sur une machine en multiprocessing :  \
 1 fichier de base : et on le divise en autant de mappers que l'on a. \
 On fait autant de processus que de mappers et ils comptes les mots dans le fichier. \
-Les mappers font ensuite le hashage des mots avec le modulo : length % nb_reducer \
-et mettes les résultats dans des fichiers \
+Les mappers font ensuite le hashage des mots avec le modulo : length(mot) % nb_reducer \
+et mettes les résultats dans des fichiers json \
 m1_r1 \
 m1_r2 \
 -- \
@@ -27,14 +31,16 @@ Une fois que tous les mappers ont finis, le manager lance les reducers.
 
 Ils vont lire les fichiers qui leurs correspondent  et mettre le résultat dans une liste.
 
-Enfin,une fois que tous les reducers ont finis, on rassemble les dico ,on trie par ordre décroissant et on écrit le résultat dans un fichier texte.
+Enfin,une fois que tous les reducers ont finis, on rassemble les dictionnaire ,on trie par ordre décroissant et on écrit le résultat dans un fichier texte.
 
 ---
 ## Idée 2 :
-Le faire toujours sur 1 machine, mais cette fois ci, 
-au lieu de faire le multiprocessing dans 1 fichier python, on va faire du multithreading. Néanmoins, cela n'est pas vraiment possible en python. \
-En fait, un processus Python ne peut pas exécuter des threads en parallèle, mais il peut les exécuter simultanément grâce au changement de contexte pendant les opérations liées aux E/S. \
+Le faire toujours sur une machine, mais cette fois ci, 
+au lieu de faire le multiprocessing , on va faire du multithreading. Néanmoins, cela n'est pas vraiment possible en python. \
+En fait, un processus Python ne peut pas réellement exécuter des threads en parallèle, mais il peut les exécuter "simultanément" grâce au changement de contexte pendant les opérations liées aux E/S. \
 En python,le multiprocessing utilise le parallélisme, le multithreading utilise la concurrence.
+
+Une chose intéressante à noter est que le multi-threading est plus rapide que le multi-processing, ce qui n'est normalement pas logique en python. Il faudrait en chercher la cause.
 
 --- 
 # Idée 3 : Sockets
@@ -89,6 +95,3 @@ Voila les interactions avec un reducer :
 --> Fin de tache du Reducer
 
 
----
-## Idée 4 : reducers variables
-=> Calculer le nombre de mapper et reducers necessaires

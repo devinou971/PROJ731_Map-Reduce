@@ -33,8 +33,6 @@ def map(content, nb_reducers):
     
     return result
 
-
-
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     ok = False
     while not ok:
@@ -71,6 +69,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 
     # ==================== GETTING DATA ====================
     print("Downloading text ... ", end="")
+    t1 = time()
     s.sendall(b"text")
     i = 0
     content = ""
@@ -79,7 +78,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         byte_content += s.recv(CHUNK_SIZE)
         # print(len(content.split("\n")), text_length)
     content = byte_content.decode("utf-8")
+    t2 = time()
     print("Done")
+    print("Temps de transfer:", t2-t1)
 
     # ==================== MAPPING ====================
     print("Mapping ... ", end="")
