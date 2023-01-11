@@ -20,12 +20,13 @@ reducing_finished = [False for _ in range(NB_REDUCERS)]
 threads = []
 files = ["../data/mon_combat_utf8.txt"]
 file_contents = []
+print("Reading files")
 for file in files:
     # ISO-8859-1
     with open(file, "r", encoding="utf8") as f:
     # with open(file, "r", encoding="ISO-8859-1") as f:
         file_contents += f.readlines()
-
+print("Finished reding files")
 class MapperThread(threading.Thread):
     def __init__(self, ip, port, clientsocket, id, file_contents) -> None:
         threading.Thread.__init__(self)
@@ -211,16 +212,17 @@ with socket(AF_INET, SOCK_STREAM) as s :
                 clientsocket.sendall(not_allowed.to_bytes(2, 'little', signed=True))
         
         elif thread_type == b"reducer":
-            if current_reducer_id < NB_MAPPERS:
+            if current_reducer_id < NB_MAPPERS and current_mapper_id >= NB_MAPPERS - 1:
                 clientsocket.sendall(current_reducer_id.to_bytes(2, 'little', signed=True))
                 newthread = ReducerThread(ip, port, clientsocket, current_reducer_id, file_contents)
                 current_reducer_id += 1
                 newthread.start()
+                threads.append(newthread)
+
             else: 
                 not_allowed = -1
                 clientsocket.sendall(not_allowed.to_bytes(2, 'little', signed=True))
         
-        threads.append(newthread)
 
 all_true = [True for _ in range(NB_REDUCERS)]
 while reducing_finished != all_true:
