@@ -1,4 +1,7 @@
 # PROJ731_Map-Reduce
+
+Malacarne Etienne / Dasseux Damien
+
 On fait le projet en Python
 
 Afin d'étudier le Map-Reduce, nous en avons faits plusieurs versions différentes.
