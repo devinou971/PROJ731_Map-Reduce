@@ -18,7 +18,7 @@ ready = [False for _ in range(NB_MAPPERS)]
 reducing_finished = [False for _ in range(NB_REDUCERS)]
 
 threads = []
-files = ["../data/mon_combat_gros.txt"]
+files = ["../data/mon_combat_utf8.txt"]
 file_contents = []
 print("Reading files")
 for file in files:
